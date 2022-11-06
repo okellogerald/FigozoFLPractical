@@ -6,13 +6,13 @@ import '../exceptions/api_exception/api_exception.dart';
 import '../models/cat.dart';
 
 class CatsRepository {
-  final api = const CatsAPI();
+  final _api = const CatsAPI();
 
   Future<Either<APIException, List<Cat>>> getAll() async {
     try {
-      final result = await api.get();
+      final result = await _api.get();
       final cats = result.map((e) => Cat.fromMap(e)).toList();
-      
+
       return Right(cats);
     } catch (error, trace) {
       final exception = getException(error, trace);

@@ -3,7 +3,7 @@ import 'package:path_provider/path_provider.dart';
 
 /// Communicates with local storage
 class LocalAPI {
-  final box = Hive.box("data");
+  final _box = Hive.box("data");
   static const _dogsKey = "dogs", _catsKey = "cats";
 
   static Future<void> init() async {
@@ -13,20 +13,20 @@ class LocalAPI {
   }
 
   Future<void> addCatsToBox(List catsJson) async {
-    await box.put(_catsKey, catsJson);
+    await _box.put(_catsKey, catsJson);
   }
 
   Future<void> addDogsToBox(List dogsJson) async {
-    await box.put(_dogsKey, dogsJson);
+    await _box.put(_dogsKey, dogsJson);
   }
 
   List? getDogsData() {
-    final result = box.get(_dogsKey) as List?;
+    final result = _box.get(_dogsKey) as List?;
     return result;
   }
 
   List? getCatsData() {
-    final result = box.get(_catsKey) as List?;
+    final result = _box.get(_catsKey) as List?;
     return result;
   }
 }

@@ -3,7 +3,7 @@ import 'package:figozo_fl_practical/models/cat.dart';
 import 'package:http/http.dart' as http;
 
 /// Communicates with the server
-class BaseNetworkAPI<T> {
+abstract class BaseNetworkAPI<T> {
   final String endpoint;
   const BaseNetworkAPI({required this.endpoint});
 

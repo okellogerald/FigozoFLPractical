@@ -4,7 +4,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'state/dogs_state.dart';
 
 class DogsController extends GetxController {
-  final repository = DogsRepository();
+  final _repository = DogsRepository();
   var state = const DogsState.initial();
 
   @override
@@ -17,7 +17,7 @@ class DogsController extends GetxController {
     state = DogsState.loading(state.dogs);
     update();
 
-    final result = await repository.getAll();
+    final result = await _repository.getAll();
     if (result.isRight()) {
       final dogs = result.fold((l) => null, (r) => r);
       state = DogsState.data(dogs!);

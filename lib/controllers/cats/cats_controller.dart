@@ -4,9 +4,9 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'state/cats_state.dart';
 
 class CatsController extends GetxController {
-  final repository = CatsRepository();
+  final _repository = CatsRepository();
   var state = const CatsState.initial();
-  
+
   @override
   void onInit() {
     fetchAll();
@@ -17,7 +17,7 @@ class CatsController extends GetxController {
     state = CatsState.loading(state.cats);
     update();
 
-    final result = await repository.getAll();
+    final result = await _repository.getAll();
     if (result.isRight()) {
       final cats = result.fold((l) => null, (r) => r);
       state = CatsState.data(cats!);

@@ -6,11 +6,11 @@ import '../exceptions/exceptions_handler.dart';
 import '../models/dog.dart';
 
 class DogsRepository {
-  final api = const DogsAPI();
+  final _api = const DogsAPI();
 
   Future<Either<APIException, List<Dog>>> getAll() async {
     try {
-      final result = await api.get();
+      final result = await _api.get();
       final cats = result.map((e) => Dog.fromMap(e)).toList();
       return Right(cats);
     } catch (error, trace) {
