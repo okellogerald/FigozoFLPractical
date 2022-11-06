@@ -3,6 +3,9 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 
 import 'state/cats_state.dart';
 
+/// Its only task is to manage the [CatsState] - to update the state whenever
+/// appropriate. These updates are listened & reacted-to by the pages controlled
+/// by this controller
 class CatsController extends GetxController {
   final _repository = CatsRepository();
   var state = const CatsState.initial();
@@ -13,6 +16,7 @@ class CatsController extends GetxController {
     super.onInit();
   }
 
+  /// starts the process of fetching all the cats information from the server
   void fetchAll() async {
     state = CatsState.loading(state.cats);
     update();

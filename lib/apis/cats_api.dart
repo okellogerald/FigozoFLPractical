@@ -4,6 +4,7 @@ import 'package:figozo_fl_practical/models/cat.dart';
 
 const _endpoint = "https://mocki.io/v1/77290441-d8e9-483f-80a2-a336a3364bbe";
 
+/// Handles all network requests that are associated with cats
 class CatsAPI extends BaseNetworkAPI<Cat> {
   static final _localAPI = LocalAPI();
   const CatsAPI() : super(endpoint: _endpoint);

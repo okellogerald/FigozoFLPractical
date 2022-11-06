@@ -3,6 +3,9 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 
 import 'state/dogs_state.dart';
 
+/// Its only task is to manage the [DogsState] - to update the state whenever
+/// appropriate. These updates are listened & reacted-to by the pages controlled
+/// by this controller
 class DogsController extends GetxController {
   final _repository = DogsRepository();
   var state = const DogsState.initial();
@@ -13,6 +16,7 @@ class DogsController extends GetxController {
     super.onInit();
   }
 
+  /// starts the process of fetching all the dogs information from the server
   void fetchAll() async {
     state = DogsState.loading(state.dogs);
     update();
