@@ -10,6 +10,10 @@ class Cat {
     required this.age,
   });
 
+  String get ageStringRep => "$age ${age > 1 ? "months" : "month"}";
+
+  String get weightStringRep => "$weight lbs";
+
   factory Cat.fromMap(var map) {
     return Cat(
       name: map['name'],

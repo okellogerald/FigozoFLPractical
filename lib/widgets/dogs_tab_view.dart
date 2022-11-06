@@ -1,13 +1,18 @@
+import 'package:figozo_fl_practical/apis/local_api.dart';
 import 'package:figozo_fl_practical/controllers/dogs/dogs_controller.dart';
 import 'package:figozo_fl_practical/models/dog.dart';
-import 'package:figozo_fl_practical/pages/home/dog_detail_page.dart';
+import 'package:figozo_fl_practical/pages/home/mobile/dog_detail_page.dart';
 import 'package:figozo_fl_practical/widgets/error_widget.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../exceptions/api_exception/api_exception.dart';
-import 'animal_grid_view.dart';
-import '../../../widgets/loading_indicator.dart';
+import '../exceptions/api_exception/api_exception.dart';
+import '../pages/home/web/dog_detail_page.dart';
+import 'animals_grid_view/mobile_animal_grid_view.dart';
+import 'animals_grid_view/animals_grid_view.dart';
+import 'animals_grid_view/web_animal_grid_view.dart';
+import 'loading_indicator.dart';
 
 class DogsTabView extends StatelessWidget {
   const DogsTabView({super.key});
@@ -31,12 +36,25 @@ class DogsTabView extends StatelessWidget {
   Widget buildDogsGrid(List<Dog> dogs) {
     return AnimalsGridView(
       data: dogs,
-      onPressed: (dog) => Get.to(() => DogDetailPage(dog)),
+      onPressed: (dog) {
+        if (defaultTargetPlatform.isMobile) {
+          Get.to(() => MobileDogDetailPage(dog));
+        } else {
+          Get.to(() => WebDogDetailPage(dog));
+        }
+      },
       itemBuilder: (dog) {
-        return AnimalGridTile(
+        if (defaultTargetPlatform.isMobile) {
+          return MobileAnimalGridTile(
+            name: dog.name,
+            imageUrl: dog.imageUrl,
+            age: dog.ageStringRep,
+          );
+        }
+        return WebAnimalGridTile(
           name: dog.name,
           imageUrl: dog.imageUrl,
-          age: dog.age,
+          age: dog.ageStringRep,
         );
       },
     );

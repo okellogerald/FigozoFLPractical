@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AnimalsGridView<T> extends StatelessWidget {
+class MobileAnimalsGridView<T> extends StatelessWidget {
   final List<T> data;
   final void Function(T) onPressed;
   final Widget Function(T) itemBuilder;
 
-  const AnimalsGridView({
+  const MobileAnimalsGridView({
     required this.data,
     required this.onPressed,
     required this.itemBuilder,
@@ -30,10 +30,9 @@ class AnimalsGridView<T> extends StatelessWidget {
   }
 }
 
-class AnimalGridTile extends StatelessWidget {
-  final String name, imageUrl;
-  final int age;
-  const AnimalGridTile({
+class MobileAnimalGridTile extends StatelessWidget {
+  final String name, imageUrl, age;
+  const MobileAnimalGridTile({
     super.key,
     required this.name,
     required this.imageUrl,
@@ -50,7 +49,7 @@ class AnimalGridTile extends StatelessWidget {
           backgroundImage: NetworkImage(imageUrl),
         ),
         Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
-        Text("($age ${age > 1 ? "months" : "month"})"),
+        Text(age),
       ],
     );
   }

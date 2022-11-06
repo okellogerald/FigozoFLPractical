@@ -1,11 +1,10 @@
+import 'package:figozo_fl_practical/models/dog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../models/cat.dart';
-
-class CatDetailPage extends StatelessWidget {
-  final Cat cat;
-  const CatDetailPage(this.cat, {super.key});
+class MobileDogDetailPage extends StatelessWidget {
+  final Dog dog;
+  const MobileDogDetailPage(this.dog, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,15 +13,15 @@ class CatDetailPage extends StatelessWidget {
         slivers: [
           SliverAppBar(
             expandedHeight: context.mediaQuerySize.height * .3,
-            flexibleSpace: Image.network(cat.imageUrl, fit: BoxFit.cover),
+            flexibleSpace: Image.network(dog.imageUrl, fit: BoxFit.cover),
           ),
           SliverToBoxAdapter(
             child: Column(
               children: [
-                buildCatDetail("Name", cat.name),
-                buildCatDetail("Description", cat.description),
-                buildCatDetail("Age", cat.age),
-                buildCatDetail("Weight", cat.weight),
+                buildDogDetail("Name", dog.name),
+                buildDogDetail("Description", dog.description),
+                buildDogDetail("Age", dog.ageStringRep),
+                buildDogDetail("Weight", dog.weightStringRep),
               ],
             ),
           )
@@ -31,7 +30,7 @@ class CatDetailPage extends StatelessWidget {
     );
   }
 
-  Widget buildCatDetail(String title, dynamic value) {
+  Widget buildDogDetail(String title, dynamic value) {
     return ListTile(
       title: Text(title),
       subtitle: Text(value.toString()),

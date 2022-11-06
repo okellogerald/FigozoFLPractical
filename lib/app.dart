@@ -1,5 +1,8 @@
-import 'package:figozo_fl_practical/pages/home/home_page.dart';
+import 'package:figozo_fl_practical/apis/local_api.dart';
+import 'package:figozo_fl_practical/pages/home/mobile/home_page.dart';
+import 'package:figozo_fl_practical/pages/home/web/home_page.dart';
 import 'package:figozo_fl_practical/themes/theme.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,7 +14,9 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       title: "Figozo FL Practical App",
       theme: theme,
-      home: const HomeScreen(),
+      home: defaultTargetPlatform.isMobile
+          ? const MobileHomePage()
+          : const WebHomePage(),
       debugShowCheckedModeBanner: false,
     );
   }
