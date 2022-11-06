@@ -1,10 +1,3 @@
-import 'package:figozo_fl_practical/apis/local_api.dart';
-import 'package:figozo_fl_practical/widgets/animals_grid_view/web_animal_grid_view.dart';
-import 'package:flutter/foundation.dart';
-
-import '../pages/home/mobile/cat_detail_page.dart';
-import '../pages/home/web/cat_detail_page.dart';
-import 'animals_grid_view/mobile_animal_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -34,32 +27,7 @@ class CatsTabView extends StatelessWidget {
         });
   }
 
-  Widget buildCatsGrid(List<Cat> cats) {
-    return AnimalsGridView(
-      data: cats,
-      onPressed: (cat) {
-        if (defaultTargetPlatform.isMobile) {
-          Get.to(() => MobileCatDetailPage(cat));
-        } else {
-          Get.to(() => WebCatDetailPage(cat));
-        }
-      },
-      itemBuilder: (cat) {
-        if (defaultTargetPlatform.isMobile) {
-          return MobileAnimalGridTile(
-            name: cat.name,
-            imageUrl: cat.imageUrl,
-            age: cat.ageStringRep,
-          );
-        }
-        return WebAnimalGridTile(
-          name: cat.name,
-          imageUrl: cat.imageUrl,
-          age: cat.ageStringRep,
-        );
-      },
-    );
-  }
+  Widget buildCatsGrid(List<Cat> cats) => AnimalsGridView<Cat>(data: cats);
 
   Widget buildCatsLoadError(List<Cat> _, APIException exception) {
     return CustomErrorWidget(

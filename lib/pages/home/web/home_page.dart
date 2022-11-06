@@ -88,6 +88,3 @@ class _HomeScreenState extends State<WebHomePage>
     );
   }
 }
-
-const sampleLogo =
-    "https://images.pexels.com/photos/10142683/pexels-photo-10142683.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2";
