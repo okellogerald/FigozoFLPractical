@@ -28,6 +28,7 @@ Http: https://pub.dev/packages/http
 
 &nbsp;
 # ARCHITECTURE
+
 The architecture is made following the layer-first approach. There are basically two layes: The data layer and the presentation layer.  
 The Data layer is responsible for performing network / local calls e.g fetching data from apis and the
 Presentation layer is responsible for performing presentation logic and as a result show a piece of UI
@@ -54,3 +55,4 @@ State Notifiers are created using Getx-Controllers. States are created using Fre
 &nbsp;
 # UI Flow
 ![image info](./assets/images/ui-flow.jpeg) . 
+
