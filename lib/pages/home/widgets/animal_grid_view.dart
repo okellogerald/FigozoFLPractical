@@ -50,7 +50,7 @@ class AnimalGridTile extends StatelessWidget {
           backgroundImage: NetworkImage(imageUrl),
         ),
         Text(name, style: const TextStyle(fontWeight: FontWeight.bold)),
-        Text("($age months)"),
+        Text("($age ${age > 1 ? "months" : "month"})"),
       ],
     );
   }
